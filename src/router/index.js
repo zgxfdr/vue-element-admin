@@ -38,6 +38,13 @@ const constantRoutes = [
       name: '父子组件传值',
       icon: 'iconfont icon-todo-o',
       meta: { title: 'Fatherson' }
+    },
+    {
+      path: '/mixin',
+      component: () => import('@/views/mixin/index'),
+      name: '混入',
+      icon: 'iconfont icon-todo-o',
+      meta: { title: 'Mixin' }
     } ]
   }
  

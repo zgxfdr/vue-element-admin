@@ -18,7 +18,13 @@
 <template>
   <div class="app-layout-container">
     <div class="app-sidenav">
-      <sider-bar />
+      <sider-bar v-slot="scope">
+        {{scope.test.begin}}
+        <p style="color:#fff;font-size:18px;">hello</p>  
+       <!-- <template #hello> <p  style="color:#fff;font-size:18px;">hello</p>  </template>
+       <template #world> <p  style="color:#fff;font-size:18px;">world</p>  </template> -->
+       </sider-bar>
+      
     </div>
     <div class="app-layout">
       <div class="app-layout-header">
@@ -39,6 +45,11 @@ export default {
     AppMain,
     SiderBar,
     NavBar 
+  },
+  data(){
+    return{
+      hello:"hello"
+    }
   }
 };
 </script>
