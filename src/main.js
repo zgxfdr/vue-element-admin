@@ -1,5 +1,17 @@
 // 加载 Vue
-import Vue from 'vue'
+import Vue from 'vue' 
+import * as Sentry from '@sentry/browser';
+import * as Integrations from '@sentry/integrations';
+
+console.log(process.env);
+Sentry.init({
+  dsn: 'https://31570ac77a254873a2f6db9efb5ea1e5@sentry.io/5175250',
+  integrations: [new Integrations.Vue({Vue, attachProps: true}), new Integrations.RewriteFrames()],
+  release: process.env.RELEASE_VERSION
+});
+ 
+
+Vue.prototype.Sentry = Sentry
 
 // 加载样式初始化
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
@@ -10,7 +22,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Element)
 
 // 加载全局样式
-import '@/styles/index.scss'
+import '@/styles/index.css'
 
 import App from './App.vue'
 import router from './router'

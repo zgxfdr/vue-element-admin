@@ -1,4 +1,4 @@
-# chank-element-admin
+# vue-element-admin
 
 ## Project setup
 ```

@@ -1,6 +1,10 @@
 <style scoped>
-.blue{color:blue;}
-.red{color:red;}
+.blue {
+	color: blue;
+}
+.red {
+	color: red;
+}
 </style>
 <template>
 	<div>
@@ -11,48 +15,60 @@
 		</P>
 		<h3>computed计算属性</h3>
 		<p :class="{blue:isBlue}" :style="{fontSize:fs}">{{myName}}</p>
-		<button @click="changeName">点击改变myName</button> 
+		<button @click="changeName">点击改变myName</button>
 		<p>我的myMixi组件修改的title属性值：{{isamtitle}}</p>
 		<myMixin :title.sync="isamtitle"></myMixin>
 	</div>
 </template>
 <script>
 import myMixin from './component/child'
+import * as Raven from "raven-js"; // 首先引入
 export default {
-	components:{myMixin},
+	components: { myMixin },
 	mixins: [myMixin],
 	data() {
 		return {
-			isamtitle:"hello",
-			fs:"20px",
-			isBlue:true,
+			isamtitle: "hello",
+			fs: "20px",
+			isBlue: true,
 			num: 1,
-			message: 'goodbye', 
-			firstName:"shaoshan",
-			lastName:"zeng"
+			message: 'goodbye',
+			firstName: "shaoshan",
+			lastName: "zeng"
 		}
 	},
-	computed:{
-		myName(){
-			return this.firstName+" "+this.lastName;
+	computed: {
+		myName() {
+			return this.firstName + " " + this.lastName;
 		}
 	},
-	watch:{
-		lastName(val){ 
+	watch: {
+		lastName(val) {
 			this.lastName = val;
 		}
 	},
 	created: function () {
 		console.log(this.$data)
+		
 		// => { message: "goodbye", foo: "abc", bar: "def" }
 	},
 	mounted() {
-		this.foo1();
-		this.bar();
-		this.conflicting();
+		// this.foo1();
+		// this.bar();
+		// this.conflicting();
+		this.err();
 	},
 	methods: {
-		changeName(){
+		err() {
+			try {
+				const a = 1;
+				a = 2;
+			} catch (e) {
+				console.log(e);
+				Sentry.captureException(e);
+			}
+		},
+		changeName() {
 			this.lastName = "li"
 		},
 		add: function () {

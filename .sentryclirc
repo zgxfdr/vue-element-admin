@@ -1,0 +1,7 @@
+[auth]
+token="1116cdca564b4146b11fb63bf6991fc9d58544a55ac74e38a76bca3bd93c4577"
+
+[defaults]
+url = https://sentry.io
+org = "zeng-shaoshan"
+project = vue-element-admin

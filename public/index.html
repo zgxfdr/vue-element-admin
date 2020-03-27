@@ -7,14 +7,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1375375_bwt86zrz3en.css">
+
+    <!-- Note that we now also provide a es6 build only -->
+    <!-- <script src="https://browser.sentry-cdn.com/5.15.0/bundle.es6.min.js" integrity="sha384-PLWrF0lZTj74a6ZOQ7inCrSqp3xnRQA04p+tWsBPzxEBu9ZgfRLY481+IWbTu7RT" crossorigin="anonymous"></script> -->
+    <script src="https://browser.sentry-cdn.com/5.15.0/bundle.min.js" integrity="sha384-+ysfQckQvwCB5SppH41IScIz/Iynt2pePnJNMl+D7ZOzDJ+VYhQEuwB0pA60IDM0" crossorigin="anonymous">
+    </script>
+
+    <!-- If you include the integration it will be available under Sentry.Integrations.Vue -->
+    <script src="https://browser.sentry-cdn.com/5.15.0/vue.min.js" crossorigin="anonymous"></script>
     <title>vue-element-admin</title>
 </head>
 
 <body>
     <noscript>
-    <strong>We're sorry but vue-element-admin doesn't work properly without JavaScript enabled. Please enable it to
-      continue.</strong>
-  </noscript>
+        <strong>We're sorry but vue-element-admin doesn't work properly without JavaScript enabled. Please enable it to
+            continue.</strong>
+    </noscript>
     <div id="app">
     </div>
     <!-- built files will be auto injected -->
