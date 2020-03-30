@@ -2,17 +2,18 @@
 import Vue from 'vue' 
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
+import http from '@/utils/http'
 
-console.log(process.env);
-Sentry.init({
-  dsn: 'https://31570ac77a254873a2f6db9efb5ea1e5@sentry.io/5175250',
-  integrations: [new Integrations.Vue({Vue, attachProps: true}), new Integrations.RewriteFrames()],
-  release: process.env.RELEASE_VERSION
-});
- 
+console.log(http)
 
+// Sentry.init({
+//   dsn: 'https://31570ac77a254873a2f6db9efb5ea1e5@sentry.io/5175250',
+//   integrations: [new Integrations.Vue({Vue, attachProps: true}), new Integrations.RewriteFrames()],
+//   release: process.env.RELEASE_VERSION
+// });
+  
 Vue.prototype.Sentry = Sentry
-
+Vue.prototype.http = http 
 // 加载样式初始化
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 

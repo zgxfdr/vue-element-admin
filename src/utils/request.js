@@ -17,7 +17,7 @@ service.interceptors.request.use(config => {
  
     if (store.getters.token) {
         // 需要设置token请求头
-        // 修搞 ['token']
+        // 修改['token']
         config.headers['Authorization'] = getToken()
     }
     return config

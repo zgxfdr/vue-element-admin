@@ -52,10 +52,7 @@ export default {
 		
 		// => { message: "goodbye", foo: "abc", bar: "def" }
 	},
-	mounted() {
-		// this.foo1();
-		// this.bar();
-		// this.conflicting();
+	mounted() { 
 		this.err();
 	},
 	methods: {
