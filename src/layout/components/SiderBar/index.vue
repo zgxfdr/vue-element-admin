@@ -125,9 +125,7 @@ export default {
 	data() {
 		return {
 			openeds: ["0"],
-			test: {
-				begin: "begin"
-			}
+			test: "v-solt"
 		};
 	},
 	created() {

@@ -45,7 +45,21 @@ const constantRoutes = [
       name: '混入',
       icon: 'iconfont icon-todo-o',
       meta: { title: 'Mixin' }
-    } ]
+    } ,
+  {
+      path: '/demo',
+      component: () => import('@/views/demo/index'),
+      name: 'demo',
+      icon: 'iconfont icon-todo-o',
+      meta: { title: 'Demo' }
+    },
+    {
+      path: '/set',
+      component: () => import('@/views/set/index'),
+      name: 'set',
+      icon: 'iconfont icon-todo-o',
+      meta: { title: 'Set' }
+    }  ]
   }
  
 ]

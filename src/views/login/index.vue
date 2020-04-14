@@ -94,7 +94,7 @@ import md5 from 'md5'
 export default {
 	data() {
 		return {
-			loginForm: { email: "", password: "", rememberpwd: false },
+			loginForm: { email: "2001", password: "ah6666", rememberpwd: false },
 			loginRules: {
 				email: [
 					{ required: true, message: "请输入邮箱", trigger: "blur" }
@@ -119,27 +119,28 @@ export default {
 						username: "2001",
 						password: md5("ah6666")
 					};
-          const data = await this.http.post('/sysuser/login', param);
-          if(data){
-            	this.$router.replace({ path: "/" })
-          }
+					const data = await this.http.post('/sysuser/login', param);
+					console.log(data);
+					if (data) { 
+					  this.$router.replace({ path: "/" })
+					}
 				} else {
 					console.log('error submit!!');
 					return false;
 				}
 			});
-   
 
-	},
-	resetForm(formName) {
-		this.$refs[formName].resetFields();
-	},
-	getAccountInfo() {
-		if (localStorage.getItem("accountInfo")) {
-			let account = JSON.parse(localStorage.getItem("accountInfo"));
-			this.loginForm = account;
+
+		},
+		resetForm(formName) {
+			this.$refs[formName].resetFields();
+		},
+		getAccountInfo() {
+			if (localStorage.getItem("accountInfo")) {
+				let account = JSON.parse(localStorage.getItem("accountInfo"));
+				this.loginForm = account;
+			}
 		}
 	}
-}
 };
 </script>

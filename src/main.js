@@ -2,9 +2,7 @@
 import Vue from 'vue' 
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
-import http from '@/utils/http'
-
-console.log(http)
+import http from '@/utils/http' 
 
 // Sentry.init({
 //   dsn: 'https://31570ac77a254873a2f6db9efb5ea1e5@sentry.io/5175250',
@@ -23,7 +21,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Element)
 
 // 加载全局样式
-import '@/styles/index.css'
+import '@/styles/base.css'
 
 import App from './App.vue'
 import router from './router'
