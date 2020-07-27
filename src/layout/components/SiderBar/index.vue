@@ -121,7 +121,6 @@
 
 <script>
 export default {
-<<<<<<< HEAD
   data() {
     return {
       openeds: ["0"],
@@ -131,17 +130,6 @@ export default {
     };
   },
   created() {}
-=======
-	data() {
-		return {
-			openeds: ["0"],
-			test: "v-solt"
-		};
-	},
-	created() {
-
-	}
->>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
 };
 </script>
 
