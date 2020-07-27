@@ -2,20 +2,31 @@
 import Vue from 'vue'
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
+<<<<<<< HEAD
 import http from '@/utils/http'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+=======
+import http from '@/utils/http' 
+>>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
 
 // Sentry.init({
 //   dsn: 'https://31570ac77a254873a2f6db9efb5ea1e5@sentry.io/5175250',
 //   integrations: [new Integrations.Vue({Vue, attachProps: true}), new Integrations.RewriteFrames()],
 //   release: process.env.RELEASE_VERSION
 // });
+<<<<<<< HEAD
 
 Vue.prototype.Sentry = Sentry
 Vue.prototype.http = http
     // 加载样式初始化
+=======
+  
+Vue.prototype.Sentry = Sentry
+Vue.prototype.http = http 
+// 加载样式初始化
+>>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
 // 加载 element-ui
@@ -24,7 +35,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Element)
 
 // 加载全局样式
-import '@/styles/index.css'
+import '@/styles/base.css'
 
 
 

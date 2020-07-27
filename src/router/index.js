@@ -23,6 +23,7 @@ const constantRoutes = [{
     },
 
     {
+<<<<<<< HEAD
         // dashboard
         path: '/',
         component: Layout,
@@ -59,6 +60,30 @@ const constantRoutes = [{
         ]
     }
 
+=======
+      path: '/mixin',
+      component: () => import('@/views/mixin/index'),
+      name: '混入',
+      icon: 'iconfont icon-todo-o',
+      meta: { title: 'Mixin' }
+    } ,
+  {
+      path: '/demo',
+      component: () => import('@/views/demo/index'),
+      name: 'demo',
+      icon: 'iconfont icon-todo-o',
+      meta: { title: 'Demo' }
+    },
+    {
+      path: '/set',
+      component: () => import('@/views/set/index'),
+      name: 'set',
+      icon: 'iconfont icon-todo-o',
+      meta: { title: 'Set' }
+    }  ]
+  }
+ 
+>>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
 ]
 
 // 创建 router实例

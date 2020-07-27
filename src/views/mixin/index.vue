@@ -24,6 +24,7 @@
 import myMixin from "./component/child";
 import * as Raven from "raven-js"; // 首先引入
 export default {
+<<<<<<< HEAD
   components: { myMixin },
   mixins: [myMixin],
   data() {
@@ -80,4 +81,60 @@ export default {
     }
   }
 };
+=======
+	components: { myMixin },
+	mixins: [myMixin],
+	data() {
+		return {
+			isamtitle: "hello",
+			fs: "20px",
+			isBlue: true,
+			num: 1,
+			message: 'goodbye',
+			firstName: "shaoshan",
+			lastName: "zeng"
+		}
+	},
+	computed: {
+		myName() {
+			return this.firstName + " " + this.lastName;
+		}
+	},
+	watch: {
+		lastName(val) {
+			this.lastName = val;
+		}
+	},
+	created: function () {
+		console.log(this.$data)
+		
+		// => { message: "goodbye", foo: "abc", bar: "def" }
+	},
+	mounted() { 
+		this.err();
+	},
+	methods: {
+		err() {
+			try {
+			 
+			} catch (e) {
+				console.log(e);
+				Sentry.captureException(e);
+			}
+		},
+		changeName() {
+			this.lastName = "li"
+		},
+		add: function () {
+			this.num++;
+		},
+		bar: function () {
+			console.log('bar')
+		},
+		conflicting: function () {
+			console.log('from self')
+		}
+	}
+}
+>>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
 </script>

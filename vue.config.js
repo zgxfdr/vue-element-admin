@@ -2,7 +2,7 @@
 'use strict'
 const path = require('path')
 const deFaultSettings = require('./src/setting.js')
-const SentryPlugin = require('@sentry/webpack-plugin');
+const SentryCliPlugin  = require('@sentry/webpack-plugin');
 
 
 function resolve(dir) {
@@ -21,7 +21,11 @@ module.exports = {
     publicPath: './',
     outputDir: 'dist',
     assetsDir: 'static',
+<<<<<<< HEAD
     productionSourceMap: false,
+=======
+    productionSourceMap: false,// 开发环境源码配置项
+>>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
     devServer: {
         port: port,
         open: true
@@ -43,6 +47,7 @@ module.exports = {
                 '@': resolve('src')
             }
         },
+<<<<<<< HEAD
         // plugins: [
         //     new SentryPlugin({
         //         include: "./dist",
@@ -52,6 +57,17 @@ module.exports = {
         //         urlPrefix: "/websites/vue-source-map-test"
         //     })
         // ]
+=======
+        // plugins:[
+        //     new SentryCliPlugin ({
+        //      include: "./dist",
+        //      release: process.env.RELEASE_VERSION,
+        //      configFile: "sentry.properties",
+        //      ignore: ['node_modules'] ,
+        //      urlPrefix: "/websites/vue-source-map-test"  // 注意这个，解释往下看。
+        //     })
+        //    ]
+>>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
     },
     // webpack链式编程
     chainWebpack(config) {

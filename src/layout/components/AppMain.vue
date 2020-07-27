@@ -1,6 +1,9 @@
 <style lang="less" scoped>
 .app-main {
-  margin: 20px;
+  margin: 15px;
+  padding:15px;
+  background: #fff;
+  height:100vh;
   border-radius: 8px;
   transition: margin-left 0.2s linear;
 }

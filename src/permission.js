@@ -14,16 +14,19 @@ const whiteList = ['/login','/register'];
 // 导航守卫
 router.beforeEach((to, from, next) => {
     // 开启进度条
-    NProgress.start()
+    NProgress.start() 
     // token判断
     if (!getToken()) {
-        // 跳转是否登录页判断
-        if (to.path === '/login') {
-            next({ path: '/' })
-            NProgress.done()
-        } else {
-            next()
-        }
+        next();
+        // 判断是否登录页
+        // if (to.path === '/login') {
+        //     next();
+        //     NProgress.done()
+        // } else {
+        //     next({
+        //         path: '/login'
+        //     })
+        // }
     } else {
         // 白名单判断
         if (whiteList.indexOf(to.path) !== -1) {

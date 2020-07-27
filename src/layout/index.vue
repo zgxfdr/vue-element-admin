@@ -18,12 +18,11 @@
 <template>
   <div class="app-layout-container">
     <div class="app-sidenav">
-      <sider-bar v-slot="scope">
-        {{scope.test.begin}}
-        <p style="color:#fff;font-size:18px;">hello</p>  
-       <!-- <template #hello> <p  style="color:#fff;font-size:18px;">hello</p>  </template>
-       <template #world> <p  style="color:#fff;font-size:18px;">world</p>  </template> -->
-       </sider-bar>
+      <sider-bar/>
+      <!-- <sider-bar v-slot="scope">
+        {{scope.test}}
+        <p style="color:#fff;font-size:18px;">hello</p>   
+       </sider-bar> -->
       
     </div>
     <div class="app-layout">
