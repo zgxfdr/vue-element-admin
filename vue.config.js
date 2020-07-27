@@ -18,16 +18,16 @@ const port = process.env.port || process.env.npm_config_port || 10111
 console.log(process.env);
 
 module.exports = {
-    publicPath: '/',
+    publicPath: './',
     outputDir: 'dist',
     assetsDir: 'static',
-    productionSourceMap: true,
+    productionSourceMap: false,
     devServer: {
         port: port,
         open: true
     },
-   
-    
+
+
     // configureWebpack: config => {
     //     if (process.env.NODE_ENV === 'production') {
     //       // 为生产环境修改配置...
@@ -43,14 +43,15 @@ module.exports = {
                 '@': resolve('src')
             }
         },
-        plugins:[
-            new SentryPlugin({
-             include: "./dist",
-             release: process.env.RELEASE_VERSION,
-             configFile: "sentry.properties",
-             ignore: ['node_modules']
-            })
-           ]
+        // plugins: [
+        //     new SentryPlugin({
+        //         include: "./dist",
+        //         release: process.env.RELEASE_VERSION,
+        //         configFile: "sentry.properties",
+        //         ignore: ['node_modules'],
+        //         urlPrefix: "/websites/vue-source-map-test"
+        //     })
+        // ]
     },
     // webpack链式编程
     chainWebpack(config) {

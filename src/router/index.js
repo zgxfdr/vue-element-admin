@@ -6,67 +6,78 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 // 路由规则: 常量
-const constantRoutes = [
-  {
-    // 登录
-    path: '/login',
-    name:"login",
-    component: () => import('@/views/login/index'),
-    hidden: true
-  },
-  {
-    // 注册
-    path: '/register',
-    component: () => import('@/views/register/index'),
-    hidden: true
-  }, 
+const constantRoutes = [{
+        // 登录
+        path: '/login',
+        name: "login",
+        component: () =>
+            import ('@/views/login/index'),
+        hidden: true
+    },
+    {
+        // 注册
+        path: '/register',
+        component: () =>
+            import ('@/views/register/index'),
+        hidden: true
+    },
 
-  {
-    // dashboard
-    path: '/',
-    component: Layout,
-    children: [{
-      path: '/',
-      component: () => import('@/views/dashboard/index'),
-      name: "Dashboard",
-      icon: 'iconfont icon-todo-o',
-      meta: { title: 'Dashboard' }
-    },
     {
-      path: '/fatherson',
-      component: () => import('@/views/fatherson'),
-      name: '父子组件传值',
-      icon: 'iconfont icon-todo-o',
-      meta: { title: 'Fatherson' }
-    },
-    {
-      path: '/mixin',
-      component: () => import('@/views/mixin/index'),
-      name: '混入',
-      icon: 'iconfont icon-todo-o',
-      meta: { title: 'Mixin' }
-    } ]
-  }
- 
+        // dashboard
+        path: '/',
+        component: Layout,
+        children: [{
+                path: '/',
+                component: () =>
+                    import ('@/views/dashboard/index'),
+                name: "Dashboard",
+                icon: 'iconfont icon-todo-o',
+                meta: { title: 'Dashboard' }
+            },
+            {
+                path: '/vuex',
+                component: () =>
+                    import ('@/views/vuex/index'),
+                name: "Vuex",
+                icon: 'iconfont icon-todo-o',
+                meta: { title: 'Vuex' }
+            },
+            // {
+            //   path: '/fatherson',
+            //   component: () => import('@/views/fatherson'),
+            //   name: '父子组件传值',
+            //   icon: 'iconfont icon-todo-o',
+            //   meta: { title: 'Fatherson' }
+            // },
+            // {
+            //   path: '/mixin',
+            //   component: () => import('@/views/mixin/index'),
+            //   name: '混入',
+            //   icon: 'iconfont icon-todo-o',
+            //   meta: { title: 'Mixin' }
+            // }
+        ]
+    }
+
 ]
 
 // 创建 router实例
 const createRouter = () => new Router({
-  mode: 'history',
-  routes: constantRoutes,
-  scrollBehavior(to, from, savedPosition) {
-    // return 期望滚动位置
-    // console.log(to)
-    // console.log(from)
-    // console.log(savedPosition)
-  }
-})
-// 加载实例
+        mode: 'history',
+        routes: constantRoutes,
+        scrollBehavior(to, from, savedPosition) {
+            // return 期望滚动位置
+            // console.log(to)
+            // console.log(from)
+            // console.log(savedPosition)
+        }
+    })
+    // 加载实例
 const router = createRouter()
 
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+    const newRouter = createRouter()
+    router.matcher = newRouter.matcher // reset router
 }
 
 // 导出

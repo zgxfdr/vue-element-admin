@@ -1,5 +1,4 @@
 <style lang="less" scoped>
- 
 .login-container {
   background: #fff;
   .login-left-box {
@@ -28,7 +27,7 @@
       }
       .sub-box {
         text-align: left;
-         margin-bottom: 15px;
+        margin-bottom: 15px;
         .btn-link {
           float: right;
           font-size: 14px;
@@ -78,7 +77,7 @@
                 ></el-input>
               </el-form-item>
               <div class="sub-box">
-                <el-checkbox v-model="loginForm.rememberpwd" >记住密码</el-checkbox>
+                <el-checkbox v-model="loginForm.rememberpwd">记住密码</el-checkbox>
                 <router-link to="/register" class="btn-link">注册</router-link>
               </div>
               <el-button type="primary" class="btn-box" @click="submitForm('loginForm')">登录</el-button>
@@ -90,15 +89,14 @@
   </div>
 </template>
 <script>
- import {login,getInfo} from '@/api/user.js'
+import { login, getInfo } from "@/api/user.js";
+import md5 from "md5";
 export default {
   data() {
     return {
-      loginForm: { email: "", password: "",rememberpwd:false },
+      loginForm: { email: "", password: "", rememberpwd: false },
       loginRules: {
-        email: [
-          { required: true, message: "请输入邮箱", trigger: "blur" }
-        ],
+        email: [{ required: true, message: "请输入邮箱", trigger: "blur" }],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
           { min: 6, message: "密码长度不能小于6位", trigger: "blur" }
@@ -112,21 +110,17 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate(async valid => {
         if (valid) {
-          // 判断是否记住密码
-         let isRemember = this.loginForm.rememberpwd;
-         if(isRemember){
-           localStorage.setItem("accountInfo",JSON.stringify(this.loginForm));
-         } else{
-            localStorage.removeItem("accountInfo");
-         }
-         this.$store.dispatch('user/login',this.loginForm).then(() => {
-            this.$store.dispatch('user/getInfo').then(() => {
-               this.$router.replace({path: "/"})
-            })
-          
-          })
+          let param = {
+            username: "2001",
+            password: md5("ah6666")
+          };
+          const data = await this.http.post("/sysuser/login", param);
+          console.log(data);
+          if (data) {
+            this.$router.replace({ path: "/" });
+          }
         } else {
           console.log("error submit!!");
           return false;
@@ -136,8 +130,8 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
-    getAccountInfo(){
-      if(localStorage.getItem("accountInfo")){
+    getAccountInfo() {
+      if (localStorage.getItem("accountInfo")) {
         let account = JSON.parse(localStorage.getItem("accountInfo"));
         this.loginForm = account;
       }
