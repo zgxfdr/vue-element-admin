@@ -111,8 +111,7 @@ export default {
 		this.getAccountInfo();
 	},
 	methods: {
-		submitForm(formName) {
-
+		submitForm(formName) { 
 			this.$refs[formName].validate(async (valid) => {
 				if (valid) {
 					let param = {
@@ -120,7 +119,7 @@ export default {
 						password: md5("ah6666")
 					};
 					const data = await this.http.post('/sysuser/login', param);
-					console.log(data);
+					 
 					if (data) { 
 					  this.$router.replace({ path: "/" })
 					}

@@ -14,6 +14,7 @@ const whiteList = ['/login','/register'];
 // 导航守卫
 router.beforeEach((to, from, next) => {
     // 开启进度条
+    console.log(to)
     NProgress.start() 
     // token判断
     if (!getToken()) {

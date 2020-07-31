@@ -19,13 +19,13 @@
 </style>
 <template>
   <div class="dashboard-container">
-    <el-row>
+    <!-- <el-row>
       <el-col>
         <div class="echarts-container">
           <line-chart :chart-data="lineChartData" :legend-list="lineLegend"></line-chart>
         </div>
       </el-col>
-    </el-row>
+    </el-row> -->
     <el-row :gutter="20" class="mt20" style="height:500px;">
       <el-col :span="12">
         <div class="box-info">

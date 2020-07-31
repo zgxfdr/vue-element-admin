@@ -99,7 +99,7 @@
 
 <script>
 import Cookies from "js-cookie";
-import Breadcrumb from "./Breadcrumb";
+import Breadcrumb from "@/components/Breadcrumb";
 export default {
   components: { Breadcrumb },
   data() {

@@ -1,16 +1,25 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import { ROUTER_MODE } from '@/config'
 
-Vue.use(Router)
+/**
+ * 重写路由的push方法
+ */
+const routerPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+   
+  return routerPush.call(this, location).catch(error => error);
+}
+
+Vue.use(VueRouter); 
 
 import Layout from '@/layout'
 
 // 路由规则: 常量
-const constantRoutes = [
-  {
+const constantRoutes = [{
     // 登录
     path: '/login',
-    name:"login",
+    name: "login",
     component: () => import('@/views/login/index'),
     hidden: true
   },
@@ -19,69 +28,54 @@ const constantRoutes = [
     path: '/register',
     component: () => import('@/views/register/index'),
     hidden: true
-  }, 
-
+  },
   {
-    // dashboard
     path: '/',
     component: Layout,
+    redirect: '/dashboard',
     children: [{
-      path: '/',
-      component: () => import('@/views/dashboard/index'),
-      name: "Dashboard",
-      icon: 'iconfont icon-todo-o',
-      meta: { title: 'Dashboard' }
-    },
-    {
-      path: '/fatherson',
-      component: () => import('@/views/fatherson'),
-      name: '父子组件传值',
-      icon: 'iconfont icon-todo-o',
-      meta: { title: 'Fatherson' }
-    },
-    {
-      path: '/mixin',
-      component: () => import('@/views/mixin/index'),
-      name: '混入',
-      icon: 'iconfont icon-todo-o',
-      meta: { title: 'Mixin' }
-    } ,
-  {
-      path: '/demo',
-      component: () => import('@/views/demo/index'),
-      name: 'demo',
-      icon: 'iconfont icon-todo-o',
-      meta: { title: 'Demo' }
-    },
-    {
-      path: '/set',
-      component: () => import('@/views/set/index'),
-      name: 'set',
-      icon: 'iconfont icon-todo-o',
-      meta: { title: 'Set' }
-    }  ]
-  }
- 
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: "Dashboard",
+        icon: 'iconfont icon-todo-o',
+        meta: {
+          title: '系统首页'
+        }
+      },
+      {
+        path: '/table',
+        component: () => import('@/views/table/index'),
+        name: "Table",
+        icon: 'iconfont icon-todo-o',
+        meta: {
+          title: '表格'
+        }
+      }  
+    ]
+  } 
 ]
 
-// 创建 router实例
-const createRouter = () => new Router({
-  mode: 'history',
-  routes: constantRoutes,
-  scrollBehavior(to, from, savedPosition) {
-    // return 期望滚动位置
-    // console.log(to)
-    // console.log(from)
-    // console.log(savedPosition)
-  }
-})
-// 加载实例
-const router = createRouter()
 
-export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+import article from './modules/article';
+
+const asyncRoutes = [
+  ...constantRoutes,
+  ...article
+]
+ 
+// 创建路由
+const createRouter = () => new VueRouter({
+  mode: ROUTER_MODE || "hash",
+  scrollBehavior: () => ({ y: 0 }),
+  routes: asyncRoutes
+});
+
+const router = createRouter();
+
+export const resetRouter = () => {
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher;
 }
 
-// 导出
-export default router
+export default router;
+ 

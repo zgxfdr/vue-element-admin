@@ -53,9 +53,7 @@
 	<div class="sider-bar" :style="{width:$store.getters.sidewidth}">
 		<div class="logo-info">
 			<i class="iconfont icon-smile logo"></i>
-			<slot :test="test"></slot>
-			<!-- <slot name="hello"></slot>
-			<slot name="world"></slot>-->
+			<slot :test="test"></slot> 
 			<router-link to="/" class="name" :class="$store.getters.isCollapse?'hide':''">Cabin</router-link>
 		</div>
 		<div class="menu-info">
@@ -71,28 +69,28 @@
 						<el-submenu v-if="items.children" :index="items.path" :key="index">
 							<template slot="title">
 								<i :class="items.icon"></i>
-								<span slot="title">{{items.name}}</span>
+								<span slot="title">{{items.meta.title}}</span>
 							</template>
 							<template v-for="(trem,i) in items.children">
 								<!-- 二级有children -->
 								<el-submenu v-if="trem.children" :key="i" :index="trem.path">
 									<template slot="title">
 										<i :class="trem.icon"></i>
-										<span slot="title">{{trem.name}}</span>
+										<span slot="title">{{trem.meta.title}}</span>
 									</template>
 									<template v-for="(value,idx) in trem.children">
 										<!-- 三级有children -->
 										<template v-if="value.children">
 											<el-submenu :index="value.path" :key="idx">
-												<span slot="title">{{value.name}}</span>
-												<el-menu-item v-for="(v,k) in value.children" :index="v.path" :key="k">{{v.name}}</el-menu-item>
+												<span slot="title">{{value.meta.title}}</span>
+												<el-menu-item v-for="(v,k) in value.children" :index="v.path" :key="k">{{v.meta.title}}</el-menu-item>
 											</el-submenu>
 										</template>
 										<!-- 三级无children -->
 										<el-menu-item v-else :index="value.path" :key="'else'+idx">
 											<template slot="title">
 												<i :class="trem.icon"></i>
-												<span slot="title">{{value.name}}</span>
+												<span slot="title">{{value.meta.title}}</span>
 											</template>
 										</el-menu-item>
 									</template>
@@ -101,7 +99,7 @@
 								<el-menu-item v-else :index="trem.path" :key="'else'+i">
 									<template slot="title">
 										<i :class="trem.icon"></i>
-										<span slot="title">{{trem.name}}</span>
+										<span slot="title">{{trem.meta.title}}</span>
 									</template>
 								</el-menu-item>
 							</template>
@@ -110,7 +108,7 @@
 						<el-menu-item v-else :index="items.path" :key="'else'+index">
 							<template slot="title">
 								<i :class="items.icon"></i>
-								<span slot="title">{{items.name}}</span>
+								<span slot="title">{{items.meta.title}}</span>
 							</template>
 						</el-menu-item>
 					</template>

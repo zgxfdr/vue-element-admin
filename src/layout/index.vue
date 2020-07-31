@@ -15,15 +15,10 @@
   }
 }
 </style>
-<template>
+<template> 
   <div class="app-layout-container">
     <div class="app-sidenav">
-      <sider-bar/>
-      <!-- <sider-bar v-slot="scope">
-        {{scope.test}}
-        <p style="color:#fff;font-size:18px;">hello</p>   
-       </sider-bar> -->
-      
+      <sider-bar/>  
     </div>
     <div class="app-layout">
       <div class="app-layout-header">
