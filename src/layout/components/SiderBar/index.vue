@@ -66,21 +66,21 @@
 				<template v-for="item in $router.options.routes">
 					<template v-for="(items,index) in item.children">
 						<!-- 一级有children -->
-						<el-submenu v-if="items.children" :index="items.path" :key="index">
+						<el-submenu v-if="items.children && !items.hidden" :index="items.path" :key="index">
 							<template slot="title">
 								<i :class="items.icon"></i>
 								<span slot="title">{{items.meta.title}}</span>
 							</template>
 							<template v-for="(trem,i) in items.children">
 								<!-- 二级有children -->
-								<el-submenu v-if="trem.children" :key="i" :index="trem.path">
+								<el-submenu v-if="trem.children && !trem.hidden" :key="i" :index="trem.path">
 									<template slot="title">
 										<i :class="trem.icon"></i>
-										<span slot="title">{{trem.meta.title}}</span>
+										<span slot="title">{{trem.meta.title}}111</span>
 									</template>
 									<template v-for="(value,idx) in trem.children">
 										<!-- 三级有children -->
-										<template v-if="value.children">
+										<template v-if="value.children  && !value.hidden">
 											<el-submenu :index="value.path" :key="idx">
 												<span slot="title">{{value.meta.title}}</span>
 												<el-menu-item v-for="(v,k) in value.children" :index="v.path" :key="k">{{v.meta.title}}</el-menu-item>
@@ -95,8 +95,8 @@
 										</el-menu-item>
 									</template>
 								</el-submenu>
-								<!-- 二级无children -->
-								<el-menu-item v-else :index="trem.path" :key="'else'+i">
+								<!-- 二级无children --> 
+								<el-menu-item v-else-if="!trem.hidden" :index="trem.path" :key="'else'+i">
 									<template slot="title">
 										<i :class="trem.icon"></i>
 										<span slot="title">{{trem.meta.title}}</span>

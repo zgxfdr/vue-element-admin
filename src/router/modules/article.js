@@ -1,5 +1,6 @@
 // 文章管理
 import Layout from '@/layout';
+import AddOrUpdateArticlesArticle from '@/views/article/articles/addOrUpdate'
 export default [{
     path: '/article',
     component: Layout,
@@ -34,8 +35,7 @@ export default [{
                 },
                 {
                     path: '/article/articles/addOrUpdate',
-                    component: () =>
-                        import(/* webpackChunkName: "AddOrUpdateArticlesArticle" */ "@/views/article/articles/addOrUpdate"),
+                    component: AddOrUpdateArticlesArticle,
                     name: 'AddOrUpdateArticlesArticle',
                     hidden: true,
                     meta: {

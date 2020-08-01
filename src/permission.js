@@ -1,46 +1,68 @@
-import router from './router'
-// import store from './store'
-// import { Message } from 'element-ui'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-import { getToken } from '@/utils/auth'
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+import { Notification } from 'element-ui';
+import router from './router';
+import store from './store';
+import { getUserInfo } from '@/utils/auth';
 
-// 设置 Nprogress
-NProgress.configure({ showSpinner: false })
+NProgress.configure({ showSpinner: false });
 
-// 设置路由白名单
-const whiteList = ['/login','/register'];
+// 路由白名单
+const whiteList = ['/login'];
 
-// 导航守卫
-router.beforeEach((to, from, next) => {
-    // 开启进度条
-    console.log(to)
-    NProgress.start() 
-    // token判断
-    if (!getToken()) {
-        next();
-        // 判断是否登录页
-        // if (to.path === '/login') {
-        //     next();
-        //     NProgress.done()
-        // } else {
-        //     next({
-        //         path: '/login'
-        //     })
-        // }
+router.beforeEach(async (to, from, next) => {
+    // 动画开始 
+    NProgress.start();
+    // 检查是否已经登录
+    const hasToken ='1';
+    const hasAeskey = '1';
+    const hasId = '1';
+    if (hasToken && hasAeskey && hasId) {
+        // 已登录
+        if (to.path === '/login') {
+            next({ path: '/' });
+            NProgress.done();
+        } else {
+            const hasAuths = store.getters.auths && store.getters.auths.length > 0;
+            if (hasAuths) {
+                next();
+            } else {
+                try {
+                    console.log("11") 
+                   // const auths = await store.dispatch('user/getAllUserAuth');
+                   // if (auths && auths.length > 0) {
+                    const auths = 0;
+                    if (!auths) {
+                        console.log(router);
+                        const accessRoutes = router.options.routes;
+                        console.log(accessRoutes)
+                        router.addRoutes(accessRoutes);
+                        next({ ...to, replace: true });
+                    } else {
+                        next();
+                    }
+                } catch (error) {
+                    // await store.dispatch('user/logout');
+                    // Notification.error({
+                    //     title: '错误',
+                    //     message: error
+                    // });
+                    // next({ path: '/login' });
+                    // NProgress.done();
+                }
+            }
+        }
     } else {
-        // 白名单判断
+        // 未登录 
         if (whiteList.indexOf(to.path) !== -1) {
             next()
         } else {
-            next('/login')
+            next({ path: '/login' })
             NProgress.done()
         }
     }
-})
+});
 
-// 导航守卫
 router.afterEach(() => {
-    // 关闭进度条
-    NProgress.done()
-})
+    NProgress.done();
+});
