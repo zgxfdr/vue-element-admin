@@ -72,7 +72,30 @@ const http = {
 
 
 
+<<<<<<< HEAD
+    },
+
+    // post(url, param) {
+    //     service.post(url, param).then(res => {
+    //         console.log(res);
+    //         const { data, code, msg } = res;
+    //         if (code != 100) {
+    //             Message({
+    //                 message: msg || 'Error',
+    //                 type: 'error',
+    //                 duration: 5 * 1000
+    //             })
+    //         } else {
+    //             return data;
+    //         }
+    //     }, (e) => {
+    //         console.log(e);
+    //     })
+    // },
+
+=======
     }, 
+>>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
     async post(url, param) {
         try {
             const response = await service.post(url, param);
