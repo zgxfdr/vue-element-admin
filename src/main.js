@@ -1,7 +1,7 @@
 // 加载 Vue
 import Vue from 'vue'
-import * as Sentry from '@sentry/browser';
-import * as Integrations from '@sentry/integrations';
+// import * as Sentry from '@sentry/browser';
+// import * as Integrations from '@sentry/integrations';
 import http from '@/utils/http'
 import App from './App.vue'
 import router from './router'
@@ -13,7 +13,7 @@ import store from './store'
 //   release: process.env.RELEASE_VERSION
 // });
 
-Vue.prototype.Sentry = Sentry
+// Vue.prototype.Sentry = Sentry
 Vue.prototype.http = http
     // 加载样式初始化
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets

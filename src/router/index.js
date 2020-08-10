@@ -1,20 +1,17 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
+import Router from "vue-router";
 import { ROUTER_MODE } from '@/config'
 
 /**
  * 重写路由的push方法
  * 解决，相同路由跳转时，报错
  */
-const routerPush = VueRouter.prototype.push;
-console.log(routerPush)
-VueRouter.prototype.push = function push(location) {
-  console.log(routerPush.call(this, location))
-  return routerPush.call(this, location).catch(error => error);
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
 }
 
-
-Vue.use(VueRouter); 
+Vue.use(Router); 
 
 import Layout from '@/layout'
 
@@ -69,7 +66,7 @@ const asyncRoutes = [
  
 console.log(ROUTER_MODE);
 // 创建路由
-const createRouter = () => new VueRouter({
+const createRouter = () => new Router({
   mode: ROUTER_MODE || "hash",
   scrollBehavior: () => ({ y: 0 }),
   routes: asyncRoutes
@@ -77,10 +74,11 @@ const createRouter = () => new VueRouter({
 
 const router = createRouter();
 
-// export const resetRouter = () => {
-//   const newRouter = createRouter();
-//   router.matcher = newRouter.matcher;
-// }
+export const resetRouter = () => {
+  const newRouter = createRouter();
+  console.log(newRouter);
+  router.matcher = newRouter.matcher;
+}
 
 export default router;
  

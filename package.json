@@ -8,10 +8,7 @@
         "lint": "vue-cli-service lint",
         "start": "npm run serve"
     },
-    "dependencies": {
-        "@sentry/browser": "^5.15.0",
-        "@sentry/integrations": "^5.15.0",
-        "@sentry/webpack-plugin": "^1.10.0",
+    "dependencies": { 
         "axios": "^0.19.0",
         "core-js": "^2.6.5",
         "echarts": "^4.3.0",
@@ -39,8 +36,7 @@
         "eslint": "^5.16.0",
         "eslint-plugin-prettier": "^3.1.0",
         "eslint-plugin-vue": "^5.0.0",
-        "mockjs": "^1.0.1-beta3",
-        "node-sass": "^4.9.0",
+        "mockjs": "^1.0.1-beta3", 
         "prettier": "^1.18.2",
         "raven-js": "^3.27.2",
         "sass-loader": "^7.1.0",
