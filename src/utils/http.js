@@ -68,11 +68,7 @@ const http = {
                 console.log("resolve")
                 return data
             }
-        } catch (e) { console.log(e) }
-
-
-
-<<<<<<< HEAD
+        } catch (e) { console.log(e) } 
     },
 
     // post(url, param) {
@@ -93,9 +89,6 @@ const http = {
     //     })
     // },
 
-=======
-    }, 
->>>>>>> 9cc463012fb5484cd11929eb4e626e5ad2c054f7
     async post(url, param) {
         try {
             const response = await service.post(url, param);

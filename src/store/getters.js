@@ -5,7 +5,11 @@ const getters = {
     sidewidth: state => state.user.sidewidth,
 
     // count: state => state.user.count
-    count: (state, getters) => { return state.user.count = 999; }
+    count: (state, getters) => {
+        return state.user.count = 999;
+    },
+    // 页面参数
+    params: state => state.router.params
 
 }
 

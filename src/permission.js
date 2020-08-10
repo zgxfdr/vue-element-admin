@@ -23,41 +23,14 @@ router.beforeEach(async (to, from, next) => {
             next({ path: '/' });
             NProgress.done();
         } else {
-            const hasAuths = store.getters.auths && store.getters.auths.length > 0;
-            if (hasAuths) {
-                next();
-            } else {
-                try {
-                    console.log("11") 
-                   // const auths = await store.dispatch('user/getAllUserAuth');
-                   // if (auths && auths.length > 0) {
-                    const auths = 0;
-                    if (!auths) {
-                        console.log(router);
-                        const accessRoutes = router.options.routes;
-                        console.log(accessRoutes)
-                        router.addRoutes(accessRoutes);
-                        next({ ...to, replace: true });
-                    } else {
-                        next();
-                    }
-                } catch (error) {
-                    // await store.dispatch('user/logout');
-                    // Notification.error({
-                    //     title: '错误',
-                    //     message: error
-                    // });
-                    // next({ path: '/login' });
-                    // NProgress.done();
-                }
-            }
+            next();
         }
     } else {
         // 未登录 
         if (whiteList.indexOf(to.path) !== -1) {
             next()
         } else {
-            next({ path: '/login' })
+            next()
             NProgress.done()
         }
     }
