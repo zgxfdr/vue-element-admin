@@ -58,10 +58,12 @@ const constantRoutes = [{
 
 
 import article from './modules/article';
+import batchPrinting from "./modules/batchPrinting";
 
 const asyncRoutes = [
   ...constantRoutes,
-  ...article
+  ...article,
+  ...batchPrinting
 ]
  
 console.log(ROUTER_MODE);

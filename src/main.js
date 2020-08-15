@@ -19,6 +19,7 @@ Vue.prototype.http = http
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
 // 加载 element-ui
+
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Element)

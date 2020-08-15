@@ -8,8 +8,7 @@ export default [{
     redirect: '/article/articles',
     meta: {
         title: '文章管理',
-        icon: 'el-icon-menu',
-        code: "SUCCESS_SYS1005",
+        icon: 'el-icon-menu' 
     },
     children: [
         {

@@ -9,11 +9,16 @@
   padding: 20px;
   border-radius: 4px;
 }
-.article-list-container {
-}
 </style>
 <template>
   <div class="article-list-container">
+    <div>
+      <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="活动名称">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+      </el-form>
+    </div>
     <!--操作按钮-->
     <div class="pd20 bgfff mb20">
       <div class="com-box-operation">
@@ -26,7 +31,7 @@
     </div>
     <!--主体-->
     <div>
-      <el-table    v-loading="loading" :data="tableData" border style="width: 100%">
+      <el-table v-loading="loading" :data="tableData" border style="width: 100%">
         <el-table-column fixed prop="date" label="日期"></el-table-column>
         <el-table-column prop="name" label="姓名"></el-table-column>
         <el-table-column prop="province" label="省份"></el-table-column>
@@ -73,15 +78,14 @@ const heartCheck = {
         ws && ws.close();
       }, this.timeout);
     }, this.timeout);
-  },
+  }
 };
-
 
 export default {
   data() {
     return {
-         // websocket地址
-      wsURL: 'ws://192.168.0.150:8085/websocket/',
+      // websocket地址
+      wsURL: "ws://192.168.0.150:8085/websocket/",
       // websocket实例
       socket: null,
       // 连接失败不进行重连
@@ -89,7 +93,7 @@ export default {
       // 最大重连次数，若连接失败
       maxReconnect: 5,
 
-      loading:true,
+      loading: true,
       currentPage: 1,
       tableData: [
         {
@@ -103,18 +107,14 @@ export default {
       ],
 
       // 筛选参数
-      options:{
-
-      }
-
+      options: {}
     };
   },
-  
-  mounted(){
 
+  mounted() {
     this.initWebSocket();
 
-    setTimeout(() => { 
+    setTimeout(() => {
       this.loading = false;
     }, 2000);
   },
@@ -124,8 +124,7 @@ export default {
     // })
   },
   methods: {
-
-     // 重连
+    // 重连
     reconnect() {
       console.log("尝试重连");
       if (this.lockReconnect || this.maxReconnect <= 0) {
@@ -136,12 +135,14 @@ export default {
         this.initWebSocket();
       }, 60 * 1000);
     },
- 
+
     // 初始化websocket
     initWebSocket() {
       try {
         if ("WebSocket" in window) {
-          this.socket = new WebSocket(this.wsURL+localStorage.getItem('access-user').id);
+          this.socket = new WebSocket(
+            this.wsURL + localStorage.getItem("access-user").id
+          );
         } else {
           console.log("您的浏览器不支持websocket");
         }
@@ -158,7 +159,6 @@ export default {
     websocketonopen() {
       console.log("WebSocket连接成功", this.socket.readyState);
       heartCheck.start(this.socket);
-      
     },
 
     // WebSocket连接发生错误
@@ -168,13 +168,13 @@ export default {
     },
 
     // WebSocket连接接收信息
-    websocketonmessage({ data }) { 
+    websocketonmessage({ data }) {
       console.log("链接接受信息");
-      
-      if(data){
+
+      if (data) {
         // 接受到信息后要执行的内容
       }
-     
+
       heartCheck.start(this.socket);
     },
 
@@ -186,7 +186,6 @@ export default {
     // WebSocket设置
     websocketsend() {},
 
-    
     handleClick(row) {
       console.log(row);
     },

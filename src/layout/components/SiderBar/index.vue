@@ -54,7 +54,7 @@
 		<div class="logo-info">
 			<i class="iconfont icon-smile logo"></i>
 			<slot :test="test"></slot> 
-			<router-link to="/" class="name" :class="$store.getters.isCollapse?'hide':''">Cabin</router-link>
+			<router-link to="/" class="name" :class="$store.getters.isCollapse?'hide':''">House</router-link>
 		</div>
 		<div class="menu-info">
 			<el-menu
@@ -105,7 +105,7 @@
 							</template>
 						</el-submenu>
 						<!-- 一级无children -->
-						<el-menu-item v-else :index="items.path" :key="'else'+index">
+						<el-menu-item v-else :index="items.path" :key="'else'+items.path">
 							<template slot="title">
 								<i :class="items.icon"></i>
 								<span slot="title">{{items.meta.title}}</span>

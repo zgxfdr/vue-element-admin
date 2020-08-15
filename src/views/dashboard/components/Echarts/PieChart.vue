@@ -64,8 +64,7 @@ export default {
     initChart() {
       // 使用echarts的主题  第二个参数可以指定前面引入的主题
       // var chart = echarts.init(document.getElementById('main'), 'macarons');
-      this.chart = echarts.init(this.$el, "macarons");
-
+      this.chart = echarts.init(this.$el, "macarons"); 
       this.setOptions();
     },
 
